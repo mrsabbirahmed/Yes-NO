@@ -1,0 +1,303 @@
+/* ========== Common CSS Start ========== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Poppins", sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #ffe5ef,
+        #fff5f8,
+        #fce4ec
+    );
+
+    overflow: hidden;
+}
+
+/* ========== Main Card Start ========== */
+
+.card {
+    position: relative;
+
+    width: 450px;
+    min-height: 430px;
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 20px 60px rgba(214, 51, 108, 0.18);
+
+    border: 1px solid rgba(255, 105, 150, 0.2);
+}
+
+/* ========== Heart Icon ========== */
+
+.heart {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 42px;
+
+    background: #fff0f5;
+
+    border-radius: 50%;
+
+    animation: heartbeat 1.3s infinite;
+}
+
+/* ========== Heart Animation ========== */
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+/* ========== Heading ========== */
+
+.card h1 {
+    color: #252525;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+/* ========== Subtitle ========== */
+
+.subtitle {
+    color: #888;
+
+    font-size: 15px;
+
+    margin-bottom: 35px;
+}
+
+/* ========== Buttons Area ========== */
+
+.buttons {
+    position: relative;
+
+    width: 100%;
+    height: 120px;
+}
+
+/* ========== Button Common CSS ========== */
+
+button {
+    position: absolute;
+
+    top: 25px;
+
+    width: 125px;
+
+    padding: 14px 20px;
+
+    border: none;
+    border-radius: 12px;
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        left 0.25s ease,
+        top 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* ========== Yes Button ========== */
+
+.yes {
+    left: 55px;
+
+    background: linear-gradient(
+        135deg,
+        #ff4f87,
+        #ff719e
+    );
+
+    box-shadow:
+        0 8px 20px rgba(255, 79, 135, 0.25);
+}
+
+/* ========== Yes Hover ========== */
+
+.yes:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(255, 79, 135, 0.35);
+}
+
+/* ========== No Button ========== */
+
+.no {
+    right: 55px;
+
+    background: linear-gradient(
+        135deg,
+        #777,
+        #999
+    );
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ========== No Hover ========== */
+
+.no:hover {
+    transform: scale(1.05);
+}
+
+/* ========== Success Box ========== */
+
+.success {
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    width: 300px;
+
+    padding: 25px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    border: 2px solid #ff79a5;
+
+    box-shadow:
+        0 15px 40px rgba(255, 79, 135, 0.2);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.4s ease;
+}
+
+/* ========== Success Show ========== */
+
+.success.show {
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    opacity: 1;
+}
+
+/* ========== Success Heart ========== */
+
+.success-heart {
+    font-size: 50px;
+
+    margin-bottom: 5px;
+
+    animation: heartPop 0.7s ease;
+}
+
+/* ========== Heart Pop Animation ========== */
+
+@keyframes heartPop {
+
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+/* ========== Success Heading ========== */
+
+.success h2 {
+    color: #ff4f87;
+
+    font-size: 28px;
+
+    margin-bottom: 5px;
+}
+
+/* ========== Success Text ========== */
+
+.success p {
+    color: #777;
+
+    font-size: 14px;
+}
+
+/* ========== Responsive CSS ========== */
+
+@media (max-width: 500px) {
+
+    .card {
+        width: 90%;
+        padding: 35px 20px;
+    }
+
+    .card h1 {
+        font-size: 27px;
+    }
+
+    .yes {
+        left: 25px;
+    }
+
+    .no {
+        right: 25px;
+    }
+
+}
+
