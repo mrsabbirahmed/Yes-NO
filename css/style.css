@@ -1,4 +1,4 @@
-/* ========== Common CSS Start ========== */
+/* ========== Common CSS ========== */
 
 * {
     margin: 0;
@@ -6,121 +6,180 @@
     box-sizing: border-box;
 }
 
+/* ========== Body ========== */
+
 body {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-family: "Poppins", sans-serif;
-
+    font-family: Arial, sans-serif;
     background: linear-gradient(
         135deg,
-        #ffe5ef,
-        #fff5f8,
-        #fce4ec
+        #ffe1ec,
+        #fff5f8
     );
-
     overflow: hidden;
 }
 
-/* ========== Main Card Start ========== */
+/* ========== Main Card ========== */
 
 .card {
     position: relative;
-
-    width: 450px;
-    min-height: 430px;
-
-    padding: 45px 35px;
-
+    width: 460px;
+    min-height: 480px;
+    padding: 45px 30px;
     text-align: center;
-
-    background: rgba(255, 255, 255, 0.95);
-
+    background: #ffffff;
     border-radius: 30px;
+    z-index: 1;
+    overflow: hidden;
 
     box-shadow:
-        0 20px 60px rgba(214, 51, 108, 0.18);
+        0 20px 60px rgba(255, 79, 135, 0.15);
 
-    border: 1px solid rgba(255, 105, 150, 0.2);
+    animation: cardGlow 3s ease-in-out infinite;
 }
 
-/* ========== Heart Icon ========== */
+/* ========== Animated Border ========== */
+
+.card::before {
+    content: "";
+    position: absolute;
+
+    width: 180%;
+    height: 180%;
+
+    left: -40%;
+    top: -40%;
+
+    background: conic-gradient(
+        #ff4f87,
+        #ff9fbd,
+        #c084fc,
+        #7dd3fc,
+        #ff4f87
+    );
+
+    animation: borderRotate 4s linear infinite;
+
+    z-index: -2;
+}
+
+/* ========== White Inner Layer ========== */
+
+.card::after {
+    content: "";
+
+    position: absolute;
+    inset: 4px;
+
+    background: #ffffff;
+
+    border-radius: 26px;
+
+    z-index: -1;
+}
+
+/* ========== Border Rotation ========== */
+
+@keyframes borderRotate {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ========== Card Glow ========== */
+
+@keyframes cardGlow {
+
+    0% {
+        box-shadow:
+            0 20px 60px rgba(255, 79, 135, 0.12);
+    }
+
+    50% {
+        box-shadow:
+            0 20px 75px rgba(255, 79, 135, 0.28);
+    }
+
+    100% {
+        box-shadow:
+            0 20px 60px rgba(255, 79, 135, 0.12);
+    }
+}
+
+/* ========== Main Heart ========== */
 
 .heart {
-    width: 80px;
-    height: 80px;
+    font-size: 65px;
+    margin-bottom: 10px;
 
-    margin: 0 auto 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 42px;
-
-    background: #fff0f5;
-
-    border-radius: 50%;
-
-    animation: heartbeat 1.3s infinite;
+    animation:
+        heartBeat 1.3s ease-in-out infinite;
 }
 
 /* ========== Heart Animation ========== */
 
-@keyframes heartbeat {
+@keyframes heartBeat {
 
     0% {
         transform: scale(1);
     }
 
-    50% {
+    25% {
+        transform: scale(1.12);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
         transform: scale(1.12);
     }
 
     100% {
         transform: scale(1);
     }
-
 }
 
 /* ========== Heading ========== */
 
-.card h1 {
-    color: #252525;
-
+h1 {
     font-size: 32px;
-    font-weight: 700;
-
+    color: #222;
     margin-bottom: 8px;
 }
 
-/* ========== Subtitle ========== */
+/* ========== Paragraph ========== */
 
-.subtitle {
+.card > p {
     color: #888;
-
-    font-size: 15px;
-
-    margin-bottom: 35px;
+    font-size: 16px;
+    margin-bottom: 25px;
 }
 
-/* ========== Buttons Area ========== */
+/* ========== Button Area ========== */
 
 .buttons {
     position: relative;
 
     width: 100%;
-    height: 120px;
+    height: 220px;
+
+    margin-top: 10px;
 }
 
-/* ========== Button Common CSS ========== */
+/* ========== All Buttons ========== */
 
 button {
     position: absolute;
-
-    top: 25px;
 
     width: 125px;
 
@@ -129,87 +188,129 @@ button {
     border: none;
     border-radius: 12px;
 
-    color: white;
-
-    font-family: "Poppins", sans-serif;
+    color: #ffffff;
 
     font-size: 16px;
-    font-weight: 600;
+    font-weight: bold;
 
     cursor: pointer;
 
-    transition:
-        left 0.25s ease,
-        top 0.25s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    user-select: none;
 }
 
 /* ========== Yes Button ========== */
 
 .yes {
     left: 55px;
+    top: 70px;
 
-    background: linear-gradient(
-        135deg,
-        #ff4f87,
-        #ff719e
-    );
+    background: #ff4f87;
 
     box-shadow:
-        0 8px 20px rgba(255, 79, 135, 0.25);
+        0 8px 20px rgba(255, 79, 135, 0.30);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 /* ========== Yes Hover ========== */
 
 .yes:hover {
-    transform: translateY(-3px);
+    transform: scale(1.08);
 
     box-shadow:
-        0 12px 25px rgba(255, 79, 135, 0.35);
+        0 12px 28px rgba(255, 79, 135, 0.40);
 }
 
 /* ========== No Button ========== */
 
 .no {
-    right: 55px;
+    left: 255px;
+    top: 70px;
 
-    background: linear-gradient(
-        135deg,
-        #777,
-        #999
-    );
+    background: #777777;
+
+    z-index: 10;
+
+    /*
+        No button instantly moves.
+        তাই mouse কাছে আসলে delay থাকবে না।
+    */
+
+    transition: none;
 
     box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.12);
+        0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* ========== No Hover ========== */
+/* ========== No Button Hover ========== */
 
 .no:hover {
-    transform: scale(1.05);
+    background: #666666;
 }
 
-/* ========== Success Box ========== */
+/* ========== Funny No Animation ========== */
+
+.no.run {
+    animation: shake 0.18s ease;
+}
+
+/* ========== Shake Animation ========== */
+
+@keyframes shake {
+
+    0% {
+        transform:
+            scale(1)
+            rotate(0deg);
+    }
+
+    25% {
+        transform:
+            scale(1.15)
+            rotate(-10deg);
+    }
+
+    50% {
+        transform:
+            scale(1.15)
+            rotate(10deg);
+    }
+
+    75% {
+        transform:
+            scale(1.1)
+            rotate(-5deg);
+    }
+
+    100% {
+        transform:
+            scale(1)
+            rotate(0deg);
+    }
+}
+
+/* ========== Success Popup ========== */
 
 .success {
     position: absolute;
 
     left: 50%;
-    top: 48%;
+    top: 50%;
 
     width: 300px;
 
-    padding: 25px;
+    padding: 30px;
 
     background: #ffffff;
 
+    border: 2px solid #ff6b9a;
+
     border-radius: 20px;
 
-    border: 2px solid #ff79a5;
-
     box-shadow:
-        0 15px 40px rgba(255, 79, 135, 0.2);
+        0 15px 40px rgba(255, 79, 135, 0.25);
 
     transform:
         translate(-50%, -50%)
@@ -219,10 +320,14 @@ button {
 
     pointer-events: none;
 
-    transition: 0.4s ease;
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+
+    z-index: 100;
 }
 
-/* ========== Success Show ========== */
+/* ========== Success Popup Show ========== */
 
 .success.show {
     transform:
@@ -235,29 +340,29 @@ button {
 /* ========== Success Heart ========== */
 
 .success-heart {
-    font-size: 50px;
+    font-size: 55px;
 
     margin-bottom: 5px;
 
-    animation: heartPop 0.7s ease;
+    animation:
+        pop 0.6s ease;
 }
 
-/* ========== Heart Pop Animation ========== */
+/* ========== Success Heart Animation ========== */
 
-@keyframes heartPop {
+@keyframes pop {
 
     0% {
         transform: scale(0);
     }
 
-    70% {
-        transform: scale(1.25);
+    60% {
+        transform: scale(1.3);
     }
 
     100% {
         transform: scale(1);
     }
-
 }
 
 /* ========== Success Heading ========== */
@@ -267,37 +372,88 @@ button {
 
     font-size: 28px;
 
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
-/* ========== Success Text ========== */
+/* ========== Success Paragraph ========== */
 
 .success p {
-    color: #777;
+    color: #777777;
 
-    font-size: 14px;
+    font-size: 15px;
 }
 
-/* ========== Responsive CSS ========== */
+/* ========== Mobile Responsive ========== */
 
 @media (max-width: 500px) {
 
-    .card {
-        width: 90%;
-        padding: 35px 20px;
+    body {
+        padding: 15px;
     }
 
-    .card h1 {
-        font-size: 27px;
+    .card {
+        width: 100%;
+        min-height: 470px;
+
+        padding:
+            35px 20px;
+
+        border-radius: 25px;
+    }
+
+    .card::after {
+        border-radius: 21px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .heart {
+        font-size: 55px;
+    }
+
+    .buttons {
+        height: 230px;
     }
 
     .yes {
-        left: 25px;
+        left: 10%;
     }
 
     .no {
-        right: 25px;
+        left: 55%;
     }
-
 }
 
+/* ========== Small Mobile ========== */
+
+@media (max-width: 360px) {
+
+    .card {
+        padding:
+            30px 15px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .buttons {
+        height: 240px;
+    }
+
+    button {
+        width: 110px;
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .yes {
+        left: 5%;
+    }
+
+    .no {
+        left: 55%;
+    }
+}
